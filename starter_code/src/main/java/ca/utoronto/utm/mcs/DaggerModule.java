@@ -1,22 +1,17 @@
 package ca.utoronto.utm.mcs;
 
-import com.mongodb.client.MongoClientFactory;
-import com.mongodb.client.MongoDatabase;
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import com.sun.net.httpserver.HttpServer;
 
-import javax.inject.Inject;
 import dagger.Module;
 import dagger.Provides;
 import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import javax.inject.Singleton;
 
 
 @Module (injects = {App.class}, library = true) //TODO: Add in any new classes here
 class DaggerModule {
     Config config;
+    Server server;
 
     DaggerModule(Config cfg) {
         config = cfg;
@@ -29,8 +24,14 @@ class DaggerModule {
         return clientDB.getClient();
     }
 
-    @Provides HttpServer provideHttpServer() throws IOException {
+    @Provides HttpServer provideHttpServer() {
         // create a HttpServer at ip and port according to config
-        return HttpServer.create(new InetSocketAddress(config.ip, config.port), 0);
+        try {
+            this.server = new Server(config.ip, config.port);
+        }
+        catch (IOException e){
+            server = null;
+        }
+        return server.getServer();
     }
 }
