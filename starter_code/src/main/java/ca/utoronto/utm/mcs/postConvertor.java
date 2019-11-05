@@ -27,7 +27,7 @@ public class postConvertor {
     p.setTitle((String) doc.get("title"));
     p.setAuthor((String) doc.get("author"));
     p.setContent((String) doc.get("content"));
-    p.setTags((StringArray) doc.get("tags"));
+    p.setTags((String[]) doc.get("tags"));
     ObjectId id = (ObjectId) doc.get("_id");
     p.setId(id.toString());
     return p;
