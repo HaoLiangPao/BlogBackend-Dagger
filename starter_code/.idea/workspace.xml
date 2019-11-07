@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f8ffbd9b-bac4-4232-a877-933b7e026aca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/putPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/putPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/postConvertor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/postConvertor.java" afterDir="false" />
+>>>>>>> 2f65c9aad83fd36267f14e33f56508199275efd6
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,6 +92,7 @@
       </map>
     </option>
   </component>
+  <component name="ProjectId" id="1TIrW2Z6A1hJDZgCNs0E7qsqARp" />
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
