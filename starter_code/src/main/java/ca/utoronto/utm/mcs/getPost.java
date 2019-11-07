@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.inject.Inject;
 import org.bson.*;
 import org.bson.types.*;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.mongodb.BasicDBObject;
@@ -20,6 +21,7 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import ca.utoronto.utm.mcs.Utils;
 
 public class getPost implements HttpHandler{
 
@@ -39,12 +41,17 @@ public class getPost implements HttpHandler{
 	public void handle(HttpExchange r) throws IOException {
 		// TODO Auto-generated method stub
 		if (r.getRequestMethod().equals("GET")) {
-			handleGet(r);
+			try {
+				handleGet(r);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
 	
-	public void handleGet(HttpExchange r) {
+	public void handleGet(HttpExchange r) throws IOException, JSONException {
 		String body = Utils.convert(r.getRequestBody());
 	    JSONObject deserialized = new JSONObject(body);
 	    MongoCursor result;
@@ -72,6 +79,7 @@ public class getPost implements HttpHandler{
 	}
 	
 	public MongoCursor getTitle(String title) {
+		BasicDBObject want_title = new BasicDBObject();
 		
 		return null;
 		
