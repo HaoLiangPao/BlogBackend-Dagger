@@ -26,7 +26,7 @@ public class Post {
   public String getContent() { return content; }
 
   public void setContent(String content) { this.content = content; }
-
+  
   public ArrayList<String> getTags() { return tags; }
 
   public void setTags(ArrayList<String> tags) { this.tags = tags; }

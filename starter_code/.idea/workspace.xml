@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="f8ffbd9b-bac4-4232-a877-933b7e026aca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/putPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/putPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/postConvertor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/postConvertor.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +25,12 @@
     </option>
   </component>
   <component name="ProjectId" id="1TCiMmuUctVWX6azaRHEgrLNA21" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -83,7 +89,8 @@
       </map>
     </option>
   </component>
-=======
   <component name="ProjectId" id="1TIrW2Z6A1hJDZgCNs0E7qsqARp" />
->>>>>>> 51fcaba6ee6ab3673e0b30f16f23ea06818e76c1
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
 </project>
