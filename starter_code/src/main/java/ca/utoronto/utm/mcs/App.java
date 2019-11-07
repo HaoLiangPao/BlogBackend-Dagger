@@ -17,7 +17,7 @@ public class App implements Runnable
     public void run()
     {
         /* TODO: Add Working Context Here */
-
+        System.out.println("App is running");
         // some endpoints for required functionality
         server.createContext("/api/v1/post", route_put);
 //        server.createContext("/api/v1/addMovie", new addMovie(database));
