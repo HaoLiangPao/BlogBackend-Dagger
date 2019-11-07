@@ -5,10 +5,9 @@ import com.sun.net.httpserver.HttpServer;
 
 import dagger.Module;
 import dagger.Provides;
-import com.mongodb.client.MongoClient;
 
 
-@Module (injects = {App.class, MongoDB.class, Post.class, postConvertor.class},
+@Module (injects = {App.class, MongoDB.class, Post.class, postConvertor.class, putPost.class},
     library = true) //TODO: Add in any new classes here
 class DaggerModule {
     Config config;
@@ -22,6 +21,12 @@ class DaggerModule {
         // return a MongoClient created from a local class with required Database Name and
         // Collection name
         return new MongoDB();
+    }
+
+    @Provides putPost providePutPost() {
+        // return a MongoClient created from a local class with required Database Name and
+        // Collection name
+        return new putPost();
     }
 
     @Provides Post providePost(){

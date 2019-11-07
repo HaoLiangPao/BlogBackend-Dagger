@@ -21,7 +21,7 @@ public class putPost implements HttpHandler {
   @Inject MongoDB database;
   @Inject Post post;
   @Inject postConvertor convertor;
-  ArrayList<String> tags = new ArrayList<String>();
+  private ArrayList<String> tags = new ArrayList<String>();
 
   //constructor: post and client is injected so the constructor does not have to do anything
   public putPost(){
@@ -33,7 +33,7 @@ public class putPost implements HttpHandler {
 
   public void handle(HttpExchange r) {
     try {
-      System.out.println(r.getRequestMethod());
+      System.out.println("Http Method is: " + r.getRequestMethod());
       if (r.getRequestMethod().equals("PUT")) {
         handlePut(r);
       }
@@ -68,57 +68,55 @@ public class putPost implements HttpHandler {
           post.setContent(deserialized.getString("content"));
           // special handling in tags since it should be an arrayList of strings.
           JSONArray inputTags = (JSONArray) deserialized.get("tags");
-          if (inputTags != null){
+          try {
             for (int i = 0; i < inputTags.length(); i++){
-              tags.add(inputTags.getString(i));
+              String tag = (String) inputTags.get(i);
+              tags.add(tag);
             }
+            post.setTags(tags);
+            System.out.println(post.getTags());
+            System.out.println(post);
+
+            System.out.println("post is successfully created");
+
+            //interaction with database
+            add(convertor.toDocument(post), r);
+
+            //result for server-client interaction
+            r.sendResponseHeaders(200, 0);
+            OutputStream os = r.getResponseBody();
+            os.close();
           }
-          post.setTags(tags);
-          System.out.println(post.getTags());
-          System.out.println(post);
+          // return 400 if the data types for author, title, content are not correct
+          // return 400 if the data type is not correct for tags. ex: [int, float, array...]
+          catch (Exception e){
+            System.out.println("Error Message: incompatible data type");
+            r.sendResponseHeaders(400, -1);
+          }
         }
-        else { //return 400 if the data type is not correct
-          r.sendResponseHeaders(400, -1);
-        }
-
-        System.out.println("post is successfully created");
-
-        //interaction with database
-        add(convertor.toDocument(post), r);
-
-        //result for server-client interaction
-        r.sendResponseHeaders(200, 0);
-        OutputStream os = r.getResponseBody();
-        os.close();
       }
     }
     //if deserilized failed, (ex: JSONObeject Null Value)
     catch(JSONException e) {
+      System.out.println("Error Message: JSONObject exception");
       r.sendResponseHeaders(400, -1);
     }
     //if server connection / database connection failed
     catch(Exception e) {
-      System.out.println("handelPut: something happened");
+      System.out.println("Error Message: [handelPut]something happened");
       r.sendResponseHeaders(500, -1);
     }
   }
 
   private void add(Document dbDocument, HttpExchange r) throws Exception {
-    MongoDB mongoDB = database;
-    MongoCollection collection = mongoDB.getClient().getDatabase("csc301a2").getCollection("posts");
-    try {
-      System.out.println(dbDocument.toString());
-      System.out.println(collection.toString());
-      // add the document to the database
-      collection.insertOne(dbDocument);
-
-      System.out.println("after insert document");
-    }
-    catch (Exception e){
-      r.sendResponseHeaders(111, -1);
-    }
-    System.out.println("the post is successfully added into the database");
-    mongoDB.close();
+    MongoCollection collection = database.getClient().getDatabase("csc301a2")
+        .getCollection("posts");
+    System.out.println(dbDocument.toString());
+    System.out.println(collection.toString());
+    // add the document to the database
+    collection.insertOne(dbDocument);
+    System.out.println("Log: insert operation is completed");
+    database.close();
   }
 
 }
