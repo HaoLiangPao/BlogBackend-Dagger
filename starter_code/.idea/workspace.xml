@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="f8ffbd9b-bac4-4232-a877-933b7e026aca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -82,4 +83,7 @@
       </map>
     </option>
   </component>
+=======
+  <component name="ProjectId" id="1TIrW2Z6A1hJDZgCNs0E7qsqARp" />
+>>>>>>> 51fcaba6ee6ab3673e0b30f16f23ea06818e76c1
 </project>
