@@ -4,6 +4,7 @@ import ca.utoronto.utm.mcs.Post;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
 import com.sun.xml.internal.fastinfoset.util.StringArray;
+import java.util.ArrayList;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -29,7 +30,7 @@ public class postConvertor {
     p.setTitle((String) doc.get("title"));
     p.setAuthor((String) doc.get("author"));
     p.setContent((String) doc.get("content"));
-    p.setTags((String[]) doc.get("tags"));
+    p.setTags((ArrayList<String>) doc.get("tags"));
     ObjectId id = (ObjectId) doc.get("_id");
     p.setId(id.toString());
     return p;
