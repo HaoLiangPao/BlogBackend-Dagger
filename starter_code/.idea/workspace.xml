@@ -4,6 +4,11 @@
     <list default="true" id="f8ffbd9b-bac4-4232-a877-933b7e026aca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/postConvertor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/postConvertor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/putPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/putPost.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

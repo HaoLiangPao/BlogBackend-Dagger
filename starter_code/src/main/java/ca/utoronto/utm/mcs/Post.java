@@ -12,7 +12,7 @@ public class Post {
 
   private String content;
 
-  private StringArray tags;
+  private String[] tags;
 
   public String getTitle(){ return title; }
 
@@ -26,11 +26,15 @@ public class Post {
 
   public void setContent(String content) { this.content = content; }
 
-  public StringArray getTags() { return tags; }
+  public String[] getTags() { return tags; }
 
-  public void setTags(StringArray tags) { this.tags = tags; }
+  public void setTags(String[] tags) { this.tags = tags; }
 
   public String getId() { return id; }
 
   public void setId(String id) { this.id = id; }
+
+  public Post getPost(){
+    return this;
+  }
 }

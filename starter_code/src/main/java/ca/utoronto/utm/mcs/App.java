@@ -11,15 +11,15 @@ import dagger.ObjectGraph;
 public class App implements Runnable
 {
     @Inject HttpServer server;
-    @Inject MongoClient client;
     @Inject Config config;
+    @Inject putPost route_put;
 
     public void run()
     {
         /* TODO: Add Working Context Here */
 
         // some endpoints for required functionality
-//        server.createContext("/api/v1/addActor", new addActor(database));
+        server.createContext("/api/v1/post", route_put);
 //        server.createContext("/api/v1/addMovie", new addMovie(database));
 //        server.createContext("/api/v1/addRelationship", new addRelationship(database));
 //        server.createContext("/api/v1/getActor", new getActor(database));
