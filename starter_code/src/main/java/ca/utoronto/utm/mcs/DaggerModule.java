@@ -8,7 +8,8 @@ import dagger.Provides;
 import com.mongodb.client.MongoClient;
 
 
-@Module (injects = {App.class}, library = true) //TODO: Add in any new classes here
+@Module (injects = {App.class, MongoDB.class, Post.class, postConvertor.class},
+    library = true) //TODO: Add in any new classes here
 class DaggerModule {
     Config config;
     Server server;
@@ -17,11 +18,20 @@ class DaggerModule {
         config = cfg;
     }
 
-    @Provides MongoClient provideMongoClient() {
+    @Provides MongoDB provideMongoClient() {
         // return a MongoClient created from a local class with required Database Name and
         // Collection name
-        MongoDB clientDB = new MongoDB();
-        return clientDB.getClient();
+        return new MongoDB();
+    }
+
+    @Provides Post providePost(){
+        Post post = new Post();
+        return post.getPost();
+    }
+
+    @Provides postConvertor provideConvertor(){
+        postConvertor convertor = new postConvertor();
+        return convertor.getPostConvertor();
     }
 
     @Provides HttpServer provideHttpServer() {
