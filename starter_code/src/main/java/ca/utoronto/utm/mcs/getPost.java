@@ -21,7 +21,6 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import ca.utoronto.utm.mcs.Utils;
 
 public class getPost implements HttpHandler{
 
@@ -52,7 +51,7 @@ public class getPost implements HttpHandler{
 	}
 	
 	public void handleGet(HttpExchange r) throws IOException, JSONException {
-		String body = Utils.convert(r.getRequestBody());
+		String body = Util.convert(r.getRequestBody());
 	    JSONObject deserialized = new JSONObject(body);
 	    MongoCursor result;
 	    if (deserialized.has("_id")) {
