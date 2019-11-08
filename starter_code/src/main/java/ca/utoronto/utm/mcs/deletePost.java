@@ -5,6 +5,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import dagger.ObjectGraph;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Hashtable;
 import javax.inject.Inject;
 import org.bson.Document;
@@ -83,6 +84,8 @@ public class deletePost {
       database.close();
       //result for server-client interaction
       r.sendResponseHeaders(200, 0);
+      OutputStream os = r.getResponseBody();
+      os.close();
     }
     catch (Exception e){
       System.out.println("Error Message: the post is not found in the database, delete did not"
