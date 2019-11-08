@@ -12,23 +12,14 @@ public class App implements Runnable
 {
     @Inject HttpServer server;
     @Inject Config config;
-    @Inject putPost route_put;
-    @Inject deletePost route_delete;
+    @Inject requestHandle handle;
 
     public void run()
     {
         /* TODO: Add Working Context Here */
         System.out.println("App is running");
-        // some endpoints for required functionality
-        server.createContext("/api/v1/post", route_delete);
-//        server.createContext("/api/v1/addMovie", new addMovie(database));
-//        server.createContext("/api/v1/addRelationship", new addRelationship(database));
-//        server.createContext("/api/v1/getActor", new getActor(database));
-//        server.createContext("/api/v1/getMovie", new getMovie(database));
-//        server.createContext("/api/v1/hasRelationship", new hasRelationship(database));
-//        server.createContext("/api/v1/computeBaconPath", new computeBaconPath(database));
-//        server.createContext("/api/v1/computeBaconNumber", new computeBaconNumber(database));
-
+        // one endpoint for blog operations including: (GET, PUT, DELETE)
+        server.createContext("/api/v1/post", handle);
         server.setExecutor(null);
         server.start();
         System.out.printf("Server started on port %d...\n", config.port);
