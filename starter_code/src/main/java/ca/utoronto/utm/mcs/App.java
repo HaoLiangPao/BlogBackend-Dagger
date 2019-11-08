@@ -1,6 +1,5 @@
 package ca.utoronto.utm.mcs;
 
-import com.mongodb.client.MongoClient;
 import java.net.URI;
 import java.net.URISyntaxException;
 import com.sun.net.httpserver.HttpServer;
@@ -12,20 +11,17 @@ public class App implements Runnable
 {
     @Inject HttpServer server;
     @Inject Config config;
-    @Inject requestHandle handle;
 
     public void run()
     {
         /* TODO: Add Working Context Here */
-        System.out.println("App is running");
-        // one endpoint for blog operations including: (GET, PUT, DELETE)
-        server.createContext("/api/v1/post", handle);
         server.setExecutor(null);
         server.start();
         System.out.printf("Server started on port %d...\n", config.port);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws URISyntaxException
+    {
         ObjectGraph objectGraph = ObjectGraph.create(new DaggerModule(new Config()));
         App app = objectGraph.get(App.class);
         app.run();
