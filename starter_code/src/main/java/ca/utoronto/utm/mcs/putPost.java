@@ -16,7 +16,7 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
-public class putPost implements HttpHandler {
+public class putPost {
 
   @Inject MongoDB database;
   @Inject Post post;
@@ -31,23 +31,8 @@ public class putPost implements HttpHandler {
     convertor = objectGraph.get(postConvertor.class);
   }
 
-  public void handle(HttpExchange r) {
-    try {
-      System.out.println("Http Method is: " + r.getRequestMethod());
-      if (r.getRequestMethod().equals("PUT")) {
-        handlePut(r);
-      }
-      //Undefined HTTP methods used on valid endPoint
-      else{
-        r.sendResponseHeaders(500, -1);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   // perform query in MongoDB
-  private void handlePut(HttpExchange r) throws IOException {
+  public void handlePut(HttpExchange r) throws IOException {
     try {
       String body = Utils.convert(r.getRequestBody());
       JSONObject deserialized = new JSONObject(body);

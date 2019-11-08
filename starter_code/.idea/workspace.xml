@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="a36c71ae-cc19-41db-83f6-903373d13bb4" name="Default Changelist" comment="" />
 =======
+=======
+    <list default="true" id="a36c71ae-cc19-41db-83f6-903373d13bb4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/requestHandle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/deletePost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/deletePost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/putPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/putPost.java" afterDir="false" />
+    </list>
+>>>>>>> 4860862a276eb74c253e2334d78ebbbb587c236e
     <list default="true" id="124827c7-3d07-4fb8-9ff9-5502247ec431" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" afterDir="false" />
@@ -15,6 +25,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
