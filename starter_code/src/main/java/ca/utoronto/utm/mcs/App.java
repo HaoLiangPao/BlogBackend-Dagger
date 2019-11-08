@@ -13,6 +13,7 @@ public class App implements Runnable
     @Inject HttpServer server;
     @Inject Config config;
     @Inject putPost route_put;
+    @Inject deletePost route_delete;
 
     public void run()
     {
@@ -33,9 +34,9 @@ public class App implements Runnable
         System.out.printf("Server started on port %d...\n", config.port);
     }
 
-    public static void main(String[] args) throws URISyntaxException
-    {
+    public static void main(String[] args) {
         ObjectGraph objectGraph = ObjectGraph.create(new DaggerModule(new Config()));
+        System.out.println(objectGraph.get(App.class));
         App app = objectGraph.get(App.class);
         app.run();
     }

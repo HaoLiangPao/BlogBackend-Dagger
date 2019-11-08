@@ -1,6 +1,5 @@
 package ca.utoronto.utm.mcs;
 
-import com.sun.xml.internal.fastinfoset.util.StringArray;
 import java.util.ArrayList;
 
 public class Post {

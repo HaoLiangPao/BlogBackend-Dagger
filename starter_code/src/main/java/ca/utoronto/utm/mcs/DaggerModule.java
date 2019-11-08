@@ -7,8 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 
 
-@Module (injects = {App.class, MongoDB.class, Post.class, postConvertor.class, putPost.class},
-    library = true) //TODO: Add in any new classes here
+@Module (injects = {App.class, MongoDB.class, Post.class, postConvertor.class, putPost.class, deletePost.class}, library = true) //TODO: Add in any new classes here
 class DaggerModule {
     Config config;
     Server server;
@@ -24,18 +23,28 @@ class DaggerModule {
     }
 
     @Provides putPost providePutPost() {
-        // return a MongoClient created from a local class with required Database Name and
-        // Collection name
+        // return a putPost class to handel communication with mongoDB when PUT is used
+        System.out.println("Log: putPost is created");
         return new putPost();
     }
 
-    @Provides Post providePost(){
+    @Provides deletePost providedeletePost() {
+        // return a deletePost class to handel communication with mongoDB when DELETE is used
+        System.out.println("Log: deletePost is created");
+        return new deletePost();
+    }
+
+    @Provides Post providePost() {
+        // return a Post class to store necessary data for a legit post
         Post post = new Post();
+        System.out.println("Log: Post is created");
         return post.getPost();
     }
 
     @Provides postConvertor provideConvertor(){
+        // return a postConvertor class to convert data from document to Post
         postConvertor convertor = new postConvertor();
+        System.out.println("Log: postConvertor is created");
         return convertor.getPostConvertor();
     }
 
@@ -47,6 +56,7 @@ class DaggerModule {
         catch (IOException e){
             server = null;
         }
+        System.out.println("Log: server is created");
         return server.getServer();
     }
 }

@@ -5,15 +5,10 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import dagger.ObjectGraph;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
+import java.util.Hashtable;
 import javax.inject.Inject;
-import org.bson.BsonDocument;
 import org.bson.Document;
-import org.bson.codecs.configuration.CodecRegistry;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,7 +17,6 @@ public class deletePost implements HttpHandler {
   @Inject MongoDB database;
   @Inject Post post;
   @Inject postConvertor convertor;
-  private ArrayList<String> tags = new ArrayList<String>();
 
   //constructor: post and client is injected so the constructor does not have to do anything
   public deletePost(){
@@ -61,12 +55,7 @@ public class deletePost implements HttpHandler {
         // Check if the input data type is not what required.
         if ((deserialized.getString("_id").getClass().equals(String.class))) {
           // delete the document associates to the id in mongoDBse
-          delete(convertor.toDocument(post), r);
-
-          //result for server-client interaction
-          r.sendResponseHeaders(200, 0);
-          OutputStream os = r.getResponseBody();
-          os.close();
+          delete(deserialized.getString("_id"), r);
         }
       }
     }
@@ -83,16 +72,28 @@ public class deletePost implements HttpHandler {
   }
 
   private void delete(String id, HttpExchange r) throws Exception {
+    //get access to the collection
     MongoCollection collection = database.getClient().getDatabase("csc301a2")
         .getCollection("posts");
+    //store the id and change the type to be used in a mongodb query
     ObjectId objectId = new ObjectId(id);
-    Bson queryPair = new Bson() {
+    Hashtable queryPair = new Hashtable();
+    queryPair.put("_id", objectId);
+    Document query = new Document(queryPair);
+
+    try{
+      // add the document to the database
+      collection.findOneAndDelete(query);
+      System.out.println("Log: delete operation is completed");
+      database.close();
+      //result for server-client interaction
+      r.sendResponseHeaders(200, 0);
     }
-    Document query = new Document(objectId);
-    // add the document to the database
-    collection.findOneAndDelete();
-    System.out.println("Log: insert operation is completed");
-    database.close();
+    catch (Exception e){
+      System.out.println("Error Message: the post is not found in the database, delete did not"
+          + "complete");
+      r.sendResponseHeaders(404, -1);
+    }
   }
 
 }
