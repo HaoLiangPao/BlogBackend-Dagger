@@ -1,5 +1,8 @@
 package ca.utoronto.utm.mcs;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+import java.util.ArrayList;
+
 public class Post {
 
   private String id;
@@ -10,7 +13,7 @@ public class Post {
 
   private String content;
 
-  private String[] tags;
+  private ArrayList<String> tags;
 
   public String getTitle(){ return title; }
 
@@ -24,11 +27,15 @@ public class Post {
 
   public void setContent(String content) { this.content = content; }
 
-  public String[] getTags() { return tags; }
+  public ArrayList<String> getTags() { return tags; }
 
-  public void setTags(String[] tags) { this.tags = tags; }
+  public void setTags(ArrayList<String> tags) { this.tags = tags; }
 
   public String getId() { return id; }
 
   public void setId(String id) { this.id = id; }
+
+  public Post getPost(){
+    return this;
+  }
 }

@@ -11,13 +11,14 @@ import dagger.ObjectGraph;
 public class App implements Runnable
 {
     @Inject HttpServer server;
-    @Inject MongoClient client;
     @Inject Config config;
+    @Inject getPost route_get;
 
     public void run()
     {
         /* TODO: Add Working Context Here */
-
+        System.out.println("app running");
+        server.createContext("/api/v1/post", route_get);
         // some endpoints for required functionality
 //        server.createContext("/api/v1/addActor", new addActor(database));
 //        server.createContext("/api/v1/addMovie", new addMovie(database));
@@ -27,8 +28,9 @@ public class App implements Runnable
 //        server.createContext("/api/v1/hasRelationship", new hasRelationship(database));
 //        server.createContext("/api/v1/computeBaconPath", new computeBaconPath(database));
 //        server.createContext("/api/v1/computeBaconNumber", new computeBaconNumber(database));
-
+        System.out.println("is still running");
         server.setExecutor(null);
+        System.out.println("still running");
         server.start();
         System.out.printf("Server started on port %d...\n", config.port);
     }

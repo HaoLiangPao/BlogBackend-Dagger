@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
-public class Util {
+public class Utils {
   public static String convert(InputStream inputStream) throws IOException {
 
     try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
