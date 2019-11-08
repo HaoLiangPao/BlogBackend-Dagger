@@ -88,7 +88,7 @@ public class deletePost implements HttpHandler {
     try{
       // add the document to the database
 //      collection.findOneAndDelete(query);
-      
+
       collection.deleteOne(query);
 
 
