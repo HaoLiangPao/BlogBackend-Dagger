@@ -12,7 +12,7 @@ import org.bson.types.ObjectId;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class deletePost implements HttpHandler {
+public class deletePost {
 
   @Inject MongoDB database;
   @Inject Post post;
@@ -26,23 +26,8 @@ public class deletePost implements HttpHandler {
     convertor = objectGraph.get(postConvertor.class);
   }
 
-  public void handle(HttpExchange r) {
-    try {
-      System.out.println("Http Method is: " + r.getRequestMethod());
-      if (r.getRequestMethod().equals("DELETE")) {
-        handleDelete(r);
-      }
-      //Undefined HTTP methods used on valid endPoint
-      else{
-        r.sendResponseHeaders(500, -1);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   // perform query in MongoDB
-  private void handleDelete(HttpExchange r) throws IOException {
+  public void handleDelete(HttpExchange r) throws IOException {
     try {
       String body = Utils.convert(r.getRequestBody());
       JSONObject deserialized = new JSONObject(body);
@@ -55,6 +40,8 @@ public class deletePost implements HttpHandler {
         // Check if the input data type is not what required.
         if ((deserialized.getString("_id").getClass().equals(String.class))) {
           // delete the document associates to the id in mongoDBse
+          System.out.println("Log: data type is consistent, id is:" +
+              deserialized.getString("_id"));
           delete(deserialized.getString("_id"), r);
         }
       }
