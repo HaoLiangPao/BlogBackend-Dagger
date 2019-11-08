@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b4b1531-47e3-4b44-8270-ee01f7a1f166" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/DaggerModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/MongoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/MongoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/getPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/getPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/postConvertor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/utoronto/utm/mcs/postConvertor.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

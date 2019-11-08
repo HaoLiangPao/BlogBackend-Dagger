@@ -11,8 +11,9 @@ import org.bson.types.*;
 import org.json.*;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Map;
-
+import java.util.List;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -68,7 +69,11 @@ public class getPost implements HttpHandler{
 	    	//r.sendResponseHeaders(400, -1);
 	    	String id = deserialized.getString("_id");
 	    	getID(id);
+	    	Map[] response_lis = {getresponse};
+			//String response_str = response_lis.toString();
+			//String response_str1 = "{" + response_str + "}";
 			JSONObject response = new JSONObject(getresponse);
+			//String response_str = "[" + response.toString() + "]";
 			byte[] result = response.toString().getBytes();
 
 			r.sendResponseHeaders(200, result.length);
@@ -79,6 +84,7 @@ public class getPost implements HttpHandler{
 	    else if(deserialized.has("title")){
 		    String title = deserialized.getString("title");
 		    getTitle(title);
+
 	    }
 	    else {
 	    	r.sendResponseHeaders(400, -1);
@@ -115,10 +121,20 @@ public class getPost implements HttpHandler{
 		//return mapversion;
 	}
 	
-	public MongoCursor getTitle(String title) {
-		BasicDBObject want_title = new BasicDBObject();
-		
-		return null;
+	public ArrayList getTitle(String title) {
+		MongoCollection collection = mongodb.getClient().getDatabase("csc301a2").getCollection("posts");
+		BasicDBObject regexQuery = new BasicDBObject();
+		regexQuery.put("title", new BasicDBObject("$regex", ".*" + title + "*."));
+		MongoCursor<Document> cursor = collection.find(regexQuery).iterator();
+		ArrayList<Document> documents = new ArrayList<Document>();
+		Document nextDoc;
+		while (cursor.hasNext()){
+			nextDoc = cursor.next();
+			System.out.println(nextDoc);
+			documents.add(nextDoc);
+		}
+		System.out.println("loop done");
+		return documents;
 		
 	}
 
