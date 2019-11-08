@@ -12,6 +12,7 @@ import org.json.*;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.List;
 import com.mongodb.BasicDBObject;
@@ -69,12 +70,17 @@ public class getPost implements HttpHandler{
 	    	//r.sendResponseHeaders(400, -1);
 	    	String id = deserialized.getString("_id");
 	    	getID(id);
+			System.out.println("after get, getresponse is " + getresponse.toString());
 	    	Map[] response_lis = {getresponse};
+			//System.out.println(response_lis);
 			//String response_str = response_lis.toString();
 			//String response_str1 = "{" + response_str + "}";
-			JSONObject response = new JSONObject(getresponse);
-			//String response_str = "[" + response.toString() + "]";
-			byte[] result = response.toString().getBytes();
+			//JSONObject response = new JSONObject(getresponse);
+			JSONArray responselist = new JSONArray(Arrays.asList(response_lis));
+			//String response = "{" + response_lis.toString() + "}";
+			System.out.println("response is " + responselist.toString());
+			String response_str = "{" + responselist.toString() + "}";
+			byte[] result = response_str.getBytes();
 
 			r.sendResponseHeaders(200, result.length);
 			OutputStream os = r.getResponseBody();
@@ -83,7 +89,14 @@ public class getPost implements HttpHandler{
 	    }
 	    else if(deserialized.has("title")){
 		    String title = deserialized.getString("title");
-		    getTitle(title);
+		    JSONArray responselist = new JSONArray(getTitle(title));
+			System.out.println("response is " + responselist.toString());
+			String response_str = "{" + responselist.toString() + "}";
+			byte[] result = response_str.getBytes();
+			r.sendResponseHeaders(200, result.length);
+			OutputStream os = r.getResponseBody();
+			os.write(result);
+			os.close();
 
 	    }
 	    else {

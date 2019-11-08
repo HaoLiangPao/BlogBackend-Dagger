@@ -68,8 +68,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Maven.a2 [exec:java]" />
       <item itemvalue="Application.App" />
+      <item itemvalue="Maven.a2 [exec:java]" />
     </list>
     <recent_temporary>
       <list>
@@ -95,7 +95,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
