@@ -20,7 +20,7 @@ public class App implements Runnable
         /* TODO: Add Working Context Here */
         System.out.println("App is running");
         // some endpoints for required functionality
-        server.createContext("/api/v1/post", route_put);
+        server.createContext("/api/v1/post", route_delete);
 //        server.createContext("/api/v1/addMovie", new addMovie(database));
 //        server.createContext("/api/v1/addRelationship", new addRelationship(database));
 //        server.createContext("/api/v1/getActor", new getActor(database));
@@ -36,7 +36,6 @@ public class App implements Runnable
 
     public static void main(String[] args) {
         ObjectGraph objectGraph = ObjectGraph.create(new DaggerModule(new Config()));
-        System.out.println(objectGraph.get(App.class));
         App app = objectGraph.get(App.class);
         app.run();
     }
