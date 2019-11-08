@@ -57,6 +57,10 @@ public class deletePost implements HttpHandler {
           // delete the document associates to the id in mongoDBse
           delete(deserialized.getString("_id"), r);
         }
+        else{
+          System.out.println("Error Message: incompatible input data type of '_id'");
+          r.sendResponseHeaders(400, -1);
+        }
       }
     }
     //if deserilized failed, (ex: JSONObeject Null Value)
@@ -83,7 +87,11 @@ public class deletePost implements HttpHandler {
 
     try{
       // add the document to the database
-      collection.findOneAndDelete(query);
+//      collection.findOneAndDelete(query);
+      
+      collection.deleteOne(query);
+
+
       System.out.println("Log: delete operation is completed");
       database.close();
       //result for server-client interaction
