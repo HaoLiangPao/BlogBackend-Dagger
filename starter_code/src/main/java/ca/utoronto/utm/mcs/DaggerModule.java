@@ -16,9 +16,10 @@ class DaggerModule {
         config = cfg;
     }
 
-    @Provides MongoDB provideMongoClient() {
+    @Provides MongoDB provideMongoDB() {
         // return a MongoClient created from a local class with required Database Name and
         // Collection name
+        System.out.println("Log: provideMongoDB");
         return new MongoDB();
     }
 
