@@ -38,21 +38,6 @@ class DaggerModule {
         return new deletePost();
     }
 
-    @Provides Post providePost() {
-        // return a Post class to store necessary data for a legit post
-        Post post = new Post();
-        System.out.println("Log: Post is created");
-        return post.getPost();
-    }
-
-    @Provides postConvertor provideConvertor(){
-        // return a postConvertor class to convert data from document to Post
-        postConvertor convertor = new postConvertor();
-        System.out.println("Log: postConvertor is created");
-        return convertor.getPostConvertor();
-
-    }
-
     @Provides Post providePost(){
         Post post = new Post();
         return post.getPost();

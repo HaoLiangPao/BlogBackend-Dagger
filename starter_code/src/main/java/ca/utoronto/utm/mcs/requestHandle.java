@@ -9,7 +9,7 @@ public class requestHandle implements HttpHandler {
 
   @Inject putPost put;
   @Inject deletePost delete;
-//  @Inject getPost get;
+  @Inject getPost get;
 
 
   @Override
@@ -25,9 +25,9 @@ public class requestHandle implements HttpHandler {
       } else if (r.getRequestMethod().equals("DELETE")) {
         delete.handleDelete(r);
       }
-//      else if (r.getRequestMethod().equals("GET")){
-//        get.handleGet(r);
-//      }
+      else if (r.getRequestMethod().equals("GET")){
+        get.handleGet(r);
+      }
       //Undefined HTTP methods used on valid endPoint
       else {
         r.sendResponseHeaders(405, -1);

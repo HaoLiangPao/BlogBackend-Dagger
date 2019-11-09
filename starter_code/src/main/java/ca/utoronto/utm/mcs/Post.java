@@ -30,8 +30,6 @@ public class Post {
   
   public ArrayList<String> getTags() { return tags; }
 
-  public ArrayList<String> getTags() { return tags; }
-
   public void setTags(ArrayList<String> tags) { this.tags = tags; }
 
   public String getId() { return id; }
