@@ -90,8 +90,8 @@ public class deletePost {
       }
     }
     catch (Exception e){
-      // object id is string but not 
-      r.sendResponseHeaders(404, -1);
+      // object id is string but not able to parsed, return 400 as BAD REQUEST
+      r.sendResponseHeaders(400, -1);
     }
   }
 }
