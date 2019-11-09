@@ -30,7 +30,7 @@ public class requestHandle implements HttpHandler {
 //      }
       //Undefined HTTP methods used on valid endPoint
       else {
-        r.sendResponseHeaders(500, -1);
+        r.sendResponseHeaders(405, -1);
       }
     } catch (Exception e) {
       e.printStackTrace();
