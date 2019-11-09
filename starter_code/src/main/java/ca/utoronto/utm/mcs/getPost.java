@@ -102,12 +102,6 @@ public class getPost implements HttpHandler{
 	    else {
 	    	r.sendResponseHeaders(400, -1);
 	    }
-
-
-
-
-
-
 	}
 	
 	public void getID(String id) {
