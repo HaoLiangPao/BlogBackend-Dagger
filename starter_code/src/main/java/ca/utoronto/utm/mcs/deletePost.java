@@ -44,6 +44,7 @@ public class deletePost {
               deserialized.get("_id"));
           // delete the document associates to the id in mongoDBse
           delete(deserialized.getString("_id"), r);
+          database.close();
           OutputStream os = r.getResponseBody();
           os.close();
         }
@@ -84,15 +85,6 @@ public class deletePost {
       System.out.println("Error Message: the post is not found in the database, delete did not"
           + "complete");
       r.sendResponseHeaders(404, -1);
-    }
-  }
-
-  private void close() throws Exception {
-    try{
-      database.close();
-    }
-    catch (Exception e){
-
     }
   }
 }
