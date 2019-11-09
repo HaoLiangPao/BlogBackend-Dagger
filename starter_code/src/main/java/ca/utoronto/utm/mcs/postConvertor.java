@@ -1,6 +1,10 @@
 package ca.utoronto.utm.mcs;
 
 import com.mongodb.BasicDBObjectBuilder;
+
+import com.mongodb.DBObject;
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 import java.util.ArrayList;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -11,8 +15,8 @@ public class postConvertor {
 
   public Document toDocument(Post p){
     BasicDBObjectBuilder builder = BasicDBObjectBuilder.start()
-        .append("title", p.getTitle()).append("author", p.getAuthor())
-        .append("content", p.getContent()).append("tages", p.getTags());
+            .append("title", p.getTitle()).append("author", p.getAuthor())
+            .append("content", p.getContent()).append("tages", p.getTags());
     if (p.getId() != null)
       builder = builder.append("_id", new ObjectId(p.getId()));
     Document document = new Document(builder.get().toMap());
@@ -28,7 +32,6 @@ public class postConvertor {
     p.setAuthor((String) doc.get("author"));
     p.setContent((String) doc.get("content"));
     p.setTags((ArrayList<String>) doc.get("tags"));
-
     ObjectId id = (ObjectId) doc.get("_id");
     p.setId(id.toString());
     return p;

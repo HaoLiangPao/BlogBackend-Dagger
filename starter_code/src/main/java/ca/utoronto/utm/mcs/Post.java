@@ -1,5 +1,7 @@
 package ca.utoronto.utm.mcs;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 import java.util.ArrayList;
 
 public class Post {
@@ -26,6 +28,8 @@ public class Post {
 
   public void setContent(String content) { this.content = content; }
   
+  public ArrayList<String> getTags() { return tags; }
+
   public ArrayList<String> getTags() { return tags; }
 
   public void setTags(ArrayList<String> tags) { this.tags = tags; }

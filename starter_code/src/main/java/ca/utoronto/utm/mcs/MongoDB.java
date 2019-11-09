@@ -13,7 +13,8 @@ public class MongoDB implements AutoCloseable{
   private MongoClient client;
   private static String databaseName = "csc301a2";
   private static String collectionName = "posts";
-  private static String mongoDBAddress = "mongodb://127.0.0.1:27017";
+  private static String mongoDBAddress = "mongodb://localhost:27017";
+  //private static String mongoDBAddress = "mongodb://127.0.0.1:57174";
   private Hashtable environment = new Hashtable();
 
   public MongoDB(){
