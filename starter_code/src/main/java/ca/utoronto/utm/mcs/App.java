@@ -13,6 +13,7 @@ public class App implements Runnable
     @Inject HttpServer server;
     @Inject Config config;
     @Inject getPost route_get;
+    @Inject requestHandle handle;
 
     public void run()
     {
@@ -29,14 +30,16 @@ public class App implements Runnable
 //        server.createContext("/api/v1/computeBaconPath", new computeBaconPath(database));
 //        server.createContext("/api/v1/computeBaconNumber", new computeBaconNumber(database));
         System.out.println("is still running");
+        System.out.println("App is running");
+        // one endpoint for blog operations including: (GET, PUT, DELETE)
+        server.createContext("/api/v1/post", handle);
         server.setExecutor(null);
         System.out.println("still running");
         server.start();
         System.out.printf("Server started on port %d...\n", config.port);
     }
 
-    public static void main(String[] args) throws URISyntaxException
-    {
+    public static void main(String[] args) {
         ObjectGraph objectGraph = ObjectGraph.create(new DaggerModule(new Config()));
         App app = objectGraph.get(App.class);
         app.run();
