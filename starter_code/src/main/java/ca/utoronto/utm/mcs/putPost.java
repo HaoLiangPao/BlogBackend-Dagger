@@ -23,6 +23,7 @@ public class putPost {
   @Inject postConvertor convertor;
   private ArrayList<String> tags = new ArrayList<String>();
   private JSONArray inputTags;
+  private String id;
 
   //constructor: post and client is injected so the constructor does not have to do anything
   public putPost(){
@@ -71,11 +72,17 @@ public class putPost {
         System.out.println("post is successfully created");
 
         //interaction with database
-        add(convertor.toDocument(post), r);
+        id = add(convertor.toDocument(post), r);
+        //close database client
+        database.close();
+
+        JSONObject response = new JSONObject();
+        response.put("_id", id);
 
         //result for server-client interaction
         r.sendResponseHeaders(200, 0);
         OutputStream os = r.getResponseBody();
+        os.write(response.toString().getBytes());
         os.close();
       }
     }
@@ -91,15 +98,15 @@ public class putPost {
     }
   }
 
-  private void add(Document dbDocument, HttpExchange r) throws Exception {
+  private String add(Document dbDocument, HttpExchange r) throws Exception {
     MongoCollection collection = database.getClient().getDatabase("csc301a2")
         .getCollection("posts");
     System.out.println(dbDocument.toString());
     System.out.println(collection.toString());
     // add the document to the database
     collection.insertOne(dbDocument);
+    Document docAdded = (Document) collection.find(dbDocument).iterator().next();
     System.out.println("Log: insert operation is completed");
-    database.close();
+    return docAdded.get("_id").toString();
   }
-
 }
