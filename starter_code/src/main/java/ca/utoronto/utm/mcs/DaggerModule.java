@@ -7,7 +7,8 @@ import dagger.Module;
 import dagger.Provides;
 
 
-@Module (injects = {App.class, MongoDB.class, Post.class, postConvertor.class, putPost.class, deletePost.class}, library = true) //TODO: Add in any new classes here
+@Module (injects = {App.class, MongoDB.class, Post.class, postConvertor.class, putPost.class,
+    deletePost.class}, library = true) //TODO: Add in any new classes here
 class DaggerModule {
     Config config;
     Server server;

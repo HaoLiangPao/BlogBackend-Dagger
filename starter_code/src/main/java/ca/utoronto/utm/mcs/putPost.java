@@ -22,12 +22,14 @@ public class putPost {
   @Inject Post post;
   @Inject postConvertor convertor;
   private ArrayList<String> tags = new ArrayList<String>();
+  private JSONArray inputTags;
 
   //constructor: post and client is injected so the constructor does not have to do anything
   public putPost(){
     ObjectGraph objectGraph = ObjectGraph.create(new DaggerModule(new Config()));
     post = objectGraph.get(Post.class);
     database  = objectGraph.get(MongoDB.class);
+    System.out.println("database is created");
     convertor = objectGraph.get(postConvertor.class);
   }
 
@@ -52,33 +54,29 @@ public class putPost {
           post.setAuthor(deserialized.getString("author"));
           post.setContent(deserialized.getString("content"));
           // special handling in tags since it should be an arrayList of strings.
-          JSONArray inputTags = (JSONArray) deserialized.get("tags");
-          try {
-            for (int i = 0; i < inputTags.length(); i++){
-              String tag = (String) inputTags.get(i);
-              tags.add(tag);
-            }
-            post.setTags(tags);
-            System.out.println(post.getTags());
-            System.out.println(post);
-
-            System.out.println("post is successfully created");
-
-            //interaction with database
-            add(convertor.toDocument(post), r);
-
-            //result for server-client interaction
-            r.sendResponseHeaders(200, 0);
-            OutputStream os = r.getResponseBody();
-            os.close();
-          }
-          // return 400 if the data types for author, title, content are not correct
-          // return 400 if the data type is not correct for tags. ex: [int, float, array...]
-          catch (Exception e){
-            System.out.println("Error Message: incompatible data type");
-            r.sendResponseHeaders(400, -1);
-          }
+          inputTags = (JSONArray) deserialized.get("tags");
         }
+        // return 400 if the data types for author, title, content are not correct
+        // return 400 if the data type is not correct for tags. ex: [int, float, array...]
+        else {
+          System.out.println("Error Message: incompatible data type");
+          r.sendResponseHeaders(400, -1);
+        }
+        for (int i = 0; i < inputTags.length(); i++){
+          String tag = (String) inputTags.get(i);
+          tags.add(tag);
+        }
+        post.setTags(tags);
+        System.out.println(post.getTags());
+        System.out.println("post is successfully created");
+
+        //interaction with database
+        add(convertor.toDocument(post), r);
+
+        //result for server-client interaction
+        r.sendResponseHeaders(200, 0);
+        OutputStream os = r.getResponseBody();
+        os.close();
       }
     }
     //if deserilized failed, (ex: JSONObeject Null Value)

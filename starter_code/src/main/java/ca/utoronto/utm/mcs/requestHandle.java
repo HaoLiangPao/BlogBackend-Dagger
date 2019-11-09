@@ -2,6 +2,7 @@ package ca.utoronto.utm.mcs;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import dagger.ObjectGraph;
 import javax.inject.Inject;
 
 public class requestHandle implements HttpHandler {
@@ -14,7 +15,11 @@ public class requestHandle implements HttpHandler {
   @Override
   public void handle(HttpExchange r) {
     try {
-      System.out.println("Http Method is: " + r.getRequestMethod());
+      ObjectGraph objectGraph = ObjectGraph.create(new DaggerModule(new Config()));
+      put = objectGraph.get(putPost.class);
+      delete = objectGraph.get(deletePost.class);
+//      put = objectGraph.getClass(putPost.class);
+      System.out.println("\nHttp Method is: " + r.getRequestMethod());
       if (r.getRequestMethod().equals("PUT")) {
         put.handlePut(r);
       } else if (r.getRequestMethod().equals("DELETE")) {

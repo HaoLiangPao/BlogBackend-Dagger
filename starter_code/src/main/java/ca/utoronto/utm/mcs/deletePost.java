@@ -38,12 +38,14 @@ public class deletePost {
         System.out.println("Error Message: request dose not have '_id'\n");
         r.sendResponseHeaders(400, -1);
       } else {
-        // Check if the input data type is not what required.
-        if ((deserialized.getString("_id").getClass().equals(String.class))) {
-          // delete the document associates to the id in mongoDBse
+        // Check if the input data type is not what required, return 400 as BAD REQUEST
+        if ((deserialized.get("_id").getClass().equals(String.class))) {
           System.out.println("Log: data type is consistent, id is:" +
-              deserialized.getString("_id"));
+              deserialized.get("_id"));
+          // delete the document associates to the id in mongoDBse
           delete(deserialized.getString("_id"), r);
+          OutputStream os = r.getResponseBody();
+          os.close();
         }
         else{
           System.out.println("Error Message: incompatible input data type of '_id'");
@@ -72,27 +74,26 @@ public class deletePost {
     Hashtable queryPair = new Hashtable();
     queryPair.put("_id", objectId);
     Document query = new Document(queryPair);
-
-    try{
-      // add the document to the database
-//      collection.findOneAndDelete(query);
-      
-      collection.deleteOne(query);
-
-
+    // add the document to the database
+    if (collection.deleteOne(query).getDeletedCount() != 0){
       System.out.println("Log: delete operation is completed");
-      database.close();
       //result for server-client interaction
       r.sendResponseHeaders(200, 0);
-      OutputStream os = r.getResponseBody();
-      os.close();
     }
-    catch (Exception e){
+    else  {
       System.out.println("Error Message: the post is not found in the database, delete did not"
           + "complete");
       r.sendResponseHeaders(404, -1);
     }
   }
 
+  private void close() throws Exception {
+    try{
+      database.close();
+    }
+    catch (Exception e){
+
+    }
+  }
 }
 

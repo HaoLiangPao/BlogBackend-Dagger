@@ -32,7 +32,6 @@ public class MongoDB implements AutoCloseable{
     if (database.getCollection(collectionName) == null) {
       database.createCollection(collectionName);
     }
-
     System.out.printf("Database '%s' is created with Collection '%s'...\n",
         databaseName, collectionName );
   }
