@@ -18,7 +18,7 @@ public class requestHandle implements HttpHandler {
       ObjectGraph objectGraph = ObjectGraph.create(new DaggerModule(new Config()));
       put = objectGraph.get(putPost.class);
       delete = objectGraph.get(deletePost.class);
-//      put = objectGraph.getClass(putPost.class);
+      get = objectGraph.get(getPost.class);
       System.out.println("\nHttp Method is: " + r.getRequestMethod());
       if (r.getRequestMethod().equals("PUT")) {
         put.handlePut(r);

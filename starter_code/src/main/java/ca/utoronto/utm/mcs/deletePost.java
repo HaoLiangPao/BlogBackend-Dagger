@@ -67,23 +67,30 @@ public class deletePost {
   }
 
   private void delete(String id, HttpExchange r) throws Exception {
-    //get access to the collection
-    MongoCollection collection = database.getClient().getDatabase("csc301a2")
-        .getCollection("posts");
-    //store the id and change the type to be used in a mongodb query
-    ObjectId objectId = new ObjectId(id);
-    Hashtable queryPair = new Hashtable();
-    queryPair.put("_id", objectId);
-    Document query = new Document(queryPair);
-    // add the document to the database
-    if (collection.deleteOne(query).getDeletedCount() != 0){
-      System.out.println("Log: delete operation is completed");
-      //result for server-client interaction
-      r.sendResponseHeaders(200, 0);
+
+    try {
+      //get access to the collection
+      MongoCollection collection = database.getClient().getDatabase("csc301a2")
+          .getCollection("posts");
+      //store the id and change the type to be used in a mongodb query
+      ObjectId objectId = new ObjectId(id);
+      Hashtable queryPair = new Hashtable();
+      queryPair.put("_id", objectId);
+      Document query = new Document(queryPair);
+      // add the document to the database
+      if (collection.deleteOne(query).getDeletedCount() != 0){
+        System.out.println("Log: delete operation is completed");
+        //result for server-client interaction
+        r.sendResponseHeaders(200, 0);
+      }
+      else  {
+        System.out.println("Error Message: the post is not found in the database, delete did not"
+            + "complete");
+        r.sendResponseHeaders(404, -1);
+      }
     }
-    else  {
-      System.out.println("Error Message: the post is not found in the database, delete did not"
-          + "complete");
+    catch (Exception e){
+      // object id is string but not 
       r.sendResponseHeaders(404, -1);
     }
   }

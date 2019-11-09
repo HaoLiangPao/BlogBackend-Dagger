@@ -47,9 +47,9 @@ public class putPost {
       }
       else {
         // Check if the input data type is not what required.
-        if ((deserialized.getString("title").getClass().equals(String.class)) &
-            (deserialized.getString("author").getClass().equals(String.class)) &
-            (deserialized.getString("content").getClass().equals(String.class)) &
+        if ((deserialized.get("title").getClass().equals(String.class)) &
+            (deserialized.get("author").getClass().equals(String.class)) &
+            (deserialized.get("content").getClass().equals(String.class)) &
             (deserialized.get("tags").getClass().equals(JSONArray.class))){
           post.setTitle(deserialized.getString("title"));
           post.setAuthor(deserialized.getString("author"));
