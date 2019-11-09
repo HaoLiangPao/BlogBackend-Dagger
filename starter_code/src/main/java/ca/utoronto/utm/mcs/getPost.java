@@ -23,7 +23,7 @@ import com.mongodb.client.MongoCursor;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-public class getPost implements HttpHandler{
+public class getPost {
 
 	//@Inject MongoClient client;
 	@Inject MongoDB mongodb;
@@ -41,23 +41,6 @@ public class getPost implements HttpHandler{
 		post = objectGraph.get(Post.class);
 		mongodb  = objectGraph.get(MongoDB.class);
 		convertor = objectGraph.get(postConvertor.class);
-		// TODO Auto-generated constructor stub
-		//this.database = client.getDatabase(databaseName);
-		//this.collection = database.getCollection(collectionName);
-	}
-
-	@Override
-	public void handle(HttpExchange r) throws IOException {
-		// TODO Auto-generated method stub
-		if (r.getRequestMethod().equals("GET")) {
-			try {
-				handleGet(r);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
 	}
 	
 	public void handleGet(HttpExchange r) throws IOException, JSONException {
@@ -69,7 +52,7 @@ public class getPost implements HttpHandler{
 	    	System.out.println("id found");
 	    	//r.sendResponseHeaders(400, -1);
 	    	String id = deserialized.getString("_id");
-	    	getID(id);
+	    	getID(id, r);
 			System.out.println("after get, getresponse is " + getresponse.toString());
 	    	Map[] response_lis = {getresponse};
 			//System.out.println(response_lis);
@@ -104,28 +87,36 @@ public class getPost implements HttpHandler{
 	    }
 	}
 	
-	public void getID(String id) {
-		System.out.println("getID called");
-		MongoCollection collection = mongodb.getClient().getDatabase("csc301a2").getCollection("posts");
-		BasicDBObject want_id = new BasicDBObject();
-		want_id.put("_id", new ObjectId(id));
-		System.out.println(want_id);
-		System.out.println(want_id.getClass());
-		System.out.println("query finished");
-		//Document myDoc = this.collection.find(eq("_id", id));
-		//DBObject set = (DBObject) collection.find(want_id);
-		MongoCursor<Document> cursor = collection.find(want_id).iterator();
-		System.out.println("set is " + cursor.toString());
-		Document resultpost = cursor.next();
-		//System.out.println("document is " + resultpost.toString());
-		System.out.println(cursor);
-		//System.out.println(cursor.next());
-		getresponse = resultpost;
-		System.out.println("response got");
-		//post = convertor.toPost(resultpost);
-		//MongoCursor wanted_doc = (MongoCursor) this.collection.find(want_id);
-		//System.out.println(mapversion);
-		//return mapversion;
+	public void getID(String id, HttpExchange r) throws IOException {
+		try{
+			System.out.println("getID called");
+			MongoCollection collection = mongodb.getClient().getDatabase("csc301a2").getCollection("posts");
+			BasicDBObject want_id = new BasicDBObject();
+			want_id.put("_id", new ObjectId(id));
+			System.out.println(want_id);
+			System.out.println(want_id.getClass());
+			System.out.println("query finished");
+			//Document myDoc = this.collection.find(eq("_id", id));
+			//DBObject set = (DBObject) collection.find(want_id);
+			MongoCursor<Document> cursor = collection.find(want_id).iterator();
+			System.out.println("set is " + cursor.toString());
+			if (cursor.hasNext()){
+				Document resultpost = cursor.next();
+				System.out.println(cursor);
+				getresponse = resultpost;
+				System.out.println("response got");
+			}
+			else {
+				//when object id is not existing int he database.
+				r.sendResponseHeaders(404, -1);
+			}
+		}
+		catch (Exception e){
+			//when object id is string but not parsable, return 400 as BAD REQUEST
+			r.sendResponseHeaders(400, -1);
+		}
+
+
 	}
 	
 	public ArrayList getTitle(String title) {
