@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20191216 01:15:56.700" generator="Robot 3.1.2 (Python 2.7.10 on darwin)">
+<suite source="/Users/vinoshantharmalenkam/Desktop/CSCC01-Fall-2019/a2/rootFolder/testCases" id="s1" name="testCases">
+<suite source="/Users/vinoshantharmalenkam/Desktop/CSCC01-Fall-2019/a2/rootFolder/testCases/Test1PUT.robot" id="s1-s1" name="Test1PUT">
+<test id="s1-s1-t1" name="TestPost200">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:15:56.844" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:15:56.845" starttime="20191216 01:15:56.844"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:15:56.847" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:15:56.847" starttime="20191216 01:15:56.846"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>a2</arg>
+<arg>test</arg>
+</arguments>
+<assign>
+<var>${list}</var>
+</assign>
+<msg timestamp="20191216 01:15:56.847" level="INFO">${list} = [u'a2', u'test']</msg>
+<status status="PASS" endtime="20191216 01:15:56.847" starttime="20191216 01:15:56.847"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>title=Emma Stone</arg>
+<arg>author=Jake Peralta</arg>
+<arg>content=some content</arg>
+<arg>tags=${list}</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:15:56.848" level="INFO">${params} = {u'title': u'Emma Stone', u'author': u'Jake Peralta', u'content': u'some content', u'tags': [u'a2', u'test']}</msg>
+<status status="PASS" endtime="20191216 01:15:56.848" starttime="20191216 01:15:56.848"></status>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<doc>Send a PUT request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:15:56.849" level="INFO">PUT Request using : uri=/api/v1/post, files=None, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data={"title": "Emma Stone", "author": "Jake Peralta", "content": "some content", "tags": ["a2", "test"]} 
+json=None</msg>
+<msg timestamp="20191216 01:15:56.857" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9dbcd0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:57.062" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9dbc50&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:57.468" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9f3050&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:57.472" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9f3c10&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:15:57.472" starttime="20191216 01:15:56.848"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:15:57.472" critical="yes" starttime="20191216 01:15:56.842">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9f3c10&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<test id="s1-s1-t2" name="TestPost400">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:15:57.474" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:15:57.474" starttime="20191216 01:15:57.473"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:15:57.476" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:15:57.476" starttime="20191216 01:15:57.475"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>a2</arg>
+<arg>test</arg>
+</arguments>
+<assign>
+<var>${list}</var>
+</assign>
+<msg timestamp="20191216 01:15:57.477" level="INFO">${list} = [u'a2', u'test']</msg>
+<status status="PASS" endtime="20191216 01:15:57.477" starttime="20191216 01:15:57.476"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>title=Emma Stone</arg>
+<arg>content=some content</arg>
+<arg>tags=${list}</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:15:57.479" level="INFO">${params} = {u'title': u'Emma Stone', u'content': u'some content', u'tags': [u'a2', u'test']}</msg>
+<status status="PASS" endtime="20191216 01:15:57.479" starttime="20191216 01:15:57.478"></status>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<doc>Send a PUT request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:15:57.480" level="INFO">PUT Request using : uri=/api/v1/post, files=None, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data={"title": "Emma Stone", "content": "some content", "tags": ["a2", "test"]} 
+json=None</msg>
+<msg timestamp="20191216 01:15:57.482" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa671d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:57.689" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67390&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.097" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9f3110&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.099" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67550&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:15:58.099" starttime="20191216 01:15:57.479"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:15:58.099" critical="yes" starttime="20191216 01:15:57.472">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67550&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<status status="FAIL" endtime="20191216 01:15:58.100" starttime="20191216 01:15:56.728"></status>
+</suite>
+<suite source="/Users/vinoshantharmalenkam/Desktop/CSCC01-Fall-2019/a2/rootFolder/testCases/Test2GET.robot" id="s1-s2" name="Test2GET">
+<test id="s1-s2-t1" name="TestPost200Title">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:15:58.105" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:15:58.105" starttime="20191216 01:15:58.104"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:15:58.105" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:15:58.106" starttime="20191216 01:15:58.105"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>title=Emma Stone</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:15:58.106" level="INFO">${params} = {u'title': u'Emma Stone'}</msg>
+<status status="PASS" endtime="20191216 01:15:58.106" starttime="20191216 01:15:58.106"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:15:58.107" level="INFO">GET Request using : uri=/api/v1/post, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data=None 
+json={u'title': u'Emma Stone'}</msg>
+<msg timestamp="20191216 01:15:58.111" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa671d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.314" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa760d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.720" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa76290&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.724" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa76410&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:15:58.724" starttime="20191216 01:15:58.106"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:15:58.725" critical="yes" starttime="20191216 01:15:58.104">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa76410&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<test id="s1-s2-t2" name="TestPost200ID">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:15:58.727" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:15:58.727" starttime="20191216 01:15:58.726"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:15:58.729" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:15:58.729" starttime="20191216 01:15:58.728"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>a2</arg>
+<arg>test</arg>
+</arguments>
+<assign>
+<var>${list}</var>
+</assign>
+<msg timestamp="20191216 01:15:58.730" level="INFO">${list} = [u'a2', u'test']</msg>
+<status status="PASS" endtime="20191216 01:15:58.730" starttime="20191216 01:15:58.729"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>title=Emma Stone2</arg>
+<arg>author=Jake Peralta</arg>
+<arg>content=some content</arg>
+<arg>tags=${list}</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:15:58.731" level="INFO">${params} = {u'title': u'Emma Stone2', u'author': u'Jake Peralta', u'content': u'some content', u'tags': [u'a2', u'test']}</msg>
+<status status="PASS" endtime="20191216 01:15:58.731" starttime="20191216 01:15:58.730"></status>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<doc>Send a PUT request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:15:58.732" level="INFO">PUT Request using : uri=/api/v1/post, files=None, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data={"title": "Emma Stone2", "author": "Jake Peralta", "content": "some content", "tags": ["a2", "test"]} 
+json=None</msg>
+<msg timestamp="20191216 01:15:58.736" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82050&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.940" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa76750&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.345" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa822d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.351" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82450&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:15:59.352" starttime="20191216 01:15:58.731"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:15:59.352" critical="yes" starttime="20191216 01:15:58.725">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82450&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<test id="s1-s2-t3" name="TestPost404Title">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:15:59.353" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:15:59.353" starttime="20191216 01:15:59.353"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:15:59.354" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:15:59.354" starttime="20191216 01:15:59.354"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>title=Emma Stone3</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:15:59.355" level="INFO">${params} = {u'title': u'Emma Stone3'}</msg>
+<status status="PASS" endtime="20191216 01:15:59.355" starttime="20191216 01:15:59.354"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:15:59.356" level="INFO">GET Request using : uri=/api/v1/post, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data=None 
+json={u'title': u'Emma Stone3'}</msg>
+<msg timestamp="20191216 01:15:59.366" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67210&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.570" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67cd0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.974" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67950&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.979" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9dba90&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:15:59.979" starttime="20191216 01:15:59.355"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:15:59.979" critical="yes" starttime="20191216 01:15:59.352">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9dba90&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<test id="s1-s2-t4" name="TestPost404ID">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:15:59.981" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:15:59.982" starttime="20191216 01:15:59.981"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:15:59.982" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:15:59.982" starttime="20191216 01:15:59.982"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>_id=000000000000000000000000</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:15:59.983" level="INFO">${params} = {u'_id': u'000000000000000000000000'}</msg>
+<status status="PASS" endtime="20191216 01:15:59.983" starttime="20191216 01:15:59.983"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:15:59.984" level="INFO">GET Request using : uri=/api/v1/post, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data=None 
+json={u'_id': u'000000000000000000000000'}</msg>
+<msg timestamp="20191216 01:15:59.987" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82b10&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:00.192" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82cd0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:00.598" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82dd0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:00.601" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82f90&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:16:00.602" starttime="20191216 01:15:59.983"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:16:00.602" critical="yes" starttime="20191216 01:15:59.980">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82f90&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<test id="s1-s2-t5" name="TestPost400">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:16:00.604" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:16:00.605" starttime="20191216 01:16:00.604"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:16:00.606" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:16:00.606" starttime="20191216 01:16:00.605"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>i=csc301a2</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:16:00.608" level="INFO">${params} = {u'i': u'csc301a2'}</msg>
+<status status="PASS" endtime="20191216 01:16:00.608" starttime="20191216 01:16:00.607"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:16:00.609" level="INFO">GET Request using : uri=/api/v1/post, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data=None 
+json={u'i': u'csc301a2'}</msg>
+<msg timestamp="20191216 01:16:00.613" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa92990&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:00.815" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa92b50&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.222" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa92d10&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.226" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa92e90&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:16:01.226" starttime="20191216 01:16:00.608"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:16:01.227" critical="yes" starttime="20191216 01:16:00.603">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa92e90&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<status status="FAIL" endtime="20191216 01:16:01.228" starttime="20191216 01:15:58.101"></status>
+</suite>
+<suite source="/Users/vinoshantharmalenkam/Desktop/CSCC01-Fall-2019/a2/rootFolder/testCases/Test3-405.robot" id="s1-s3" name="Test3-405">
+<test id="s1-s3-t1" name="TestPost405">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:16:01.237" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:16:01.237" starttime="20191216 01:16:01.237"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:16:01.238" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:16:01.238" starttime="20191216 01:16:01.238"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>a2</arg>
+<arg>test</arg>
+</arguments>
+<assign>
+<var>${list}</var>
+</assign>
+<msg timestamp="20191216 01:16:01.239" level="INFO">${list} = [u'a2', u'test']</msg>
+<status status="PASS" endtime="20191216 01:16:01.239" starttime="20191216 01:16:01.239"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>title=Emma Stone</arg>
+<arg>content=some content</arg>
+<arg>tags=${list}</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:16:01.240" level="INFO">${params} = {u'title': u'Emma Stone', u'content': u'some content', u'tags': [u'a2', u'test']}</msg>
+<status status="PASS" endtime="20191216 01:16:01.240" starttime="20191216 01:16:01.239"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:16:01.240" level="INFO">POST Request using : uri=/api/v1/post, files=None, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data={"title": "Emma Stone", "content": "some content", "tags": ["a2", "test"]} 
+json=None</msg>
+<msg timestamp="20191216 01:16:01.243" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa70d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.447" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa9f7d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.853" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa7350&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.857" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa74d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:16:01.858" starttime="20191216 01:16:01.240"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:16:01.858" critical="yes" starttime="20191216 01:16:01.236">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa74d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<status status="FAIL" endtime="20191216 01:16:01.859" starttime="20191216 01:16:01.232"></status>
+</suite>
+<suite source="/Users/vinoshantharmalenkam/Desktop/CSCC01-Fall-2019/a2/rootFolder/testCases/Test4DELETE.robot" id="s1-s4" name="Test4DELETE">
+<test id="s1-s4-t1" name="TestPost200ID">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:16:01.865" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:16:01.866" starttime="20191216 01:16:01.865"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:16:01.866" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:16:01.866" starttime="20191216 01:16:01.866"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>a2</arg>
+<arg>test</arg>
+</arguments>
+<assign>
+<var>${list}</var>
+</assign>
+<msg timestamp="20191216 01:16:01.867" level="INFO">${list} = [u'a2', u'test']</msg>
+<status status="PASS" endtime="20191216 01:16:01.867" starttime="20191216 01:16:01.867"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>title=Emma Stone2</arg>
+<arg>author=Jake Peralta</arg>
+<arg>content=some content</arg>
+<arg>tags=${list}</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:16:01.868" level="INFO">${params} = {u'title': u'Emma Stone2', u'author': u'Jake Peralta', u'content': u'some content', u'tags': [u'a2', u'test']}</msg>
+<status status="PASS" endtime="20191216 01:16:01.868" starttime="20191216 01:16:01.867"></status>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<doc>Send a PUT request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:16:01.868" level="INFO">PUT Request using : uri=/api/v1/post, files=None, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data={"title": "Emma Stone2", "author": "Jake Peralta", "content": "some content", "tags": ["a2", "test"]} 
+json=None</msg>
+<msg timestamp="20191216 01:16:01.871" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa92d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:02.078" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9490&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:02.484" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9650&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:02.489" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa97d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:16:02.489" starttime="20191216 01:16:01.868"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:16:02.489" critical="yes" starttime="20191216 01:16:01.864">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa97d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<test id="s1-s4-t2" name="TestPost404ID">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:16:02.491" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:16:02.492" starttime="20191216 01:16:02.491"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:16:02.493" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:16:02.493" starttime="20191216 01:16:02.492"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>_id=000000000000000000000000</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:16:02.495" level="INFO">${params} = {u'_id': u'000000000000000000000000'}</msg>
+<status status="PASS" endtime="20191216 01:16:02.495" starttime="20191216 01:16:02.494"></status>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
+<doc>Send a DELETE request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:16:02.496" level="INFO">DELETE Request using : uri=/api/v1/post, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data={"_id": "000000000000000000000000"} 
+json=None</msg>
+<msg timestamp="20191216 01:16:02.500" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa9f310&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:02.707" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa90d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.115" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9290&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.119" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9410&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:16:03.119" starttime="20191216 01:16:02.495"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:16:03.119" critical="yes" starttime="20191216 01:16:02.490">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9410&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<test id="s1-s4-t3" name="TestPost400">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+</arguments>
+<msg timestamp="20191216 01:16:03.121" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191216 01:16:03.122" starttime="20191216 01:16:03.121"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20191216 01:16:03.123" level="INFO">${headers} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20191216 01:16:03.123" starttime="20191216 01:16:03.122"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>i=csc301a2</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20191216 01:16:03.124" level="INFO">${params} = {u'i': u'csc301a2'}</msg>
+<status status="PASS" endtime="20191216 01:16:03.125" starttime="20191216 01:16:03.124"></status>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
+<doc>Send a DELETE request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>localhost</arg>
+<arg>/api/v1/post</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20191216 01:16:03.126" level="INFO">DELETE Request using : uri=/api/v1/post, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'Content-Type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0'} 
+data={"i": "csc301a2"} 
+json=None</msg>
+<msg timestamp="20191216 01:16:03.130" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9f50&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.337" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faba150&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.745" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faba310&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.748" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faba490&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</msg>
+<status status="FAIL" endtime="20191216 01:16:03.749" starttime="20191216 01:16:03.125"></status>
+</kw>
+<status status="FAIL" endtime="20191216 01:16:03.749" critical="yes" starttime="20191216 01:16:03.120">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/post (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faba490&gt;: Failed to establish a new connection: [Errno 61] Connection refused',))</status>
+</test>
+<status status="FAIL" endtime="20191216 01:16:03.751" starttime="20191216 01:16:01.860"></status>
+</suite>
+<status status="FAIL" endtime="20191216 01:16:03.755" starttime="20191216 01:15:56.702"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="11" pass="0">Critical Tests</stat>
+<stat fail="11" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="11" id="s1" name="testCases" pass="0">testCases</stat>
+<stat fail="2" id="s1-s1" name="Test1PUT" pass="0">testCases.Test1PUT</stat>
+<stat fail="5" id="s1-s2" name="Test2GET" pass="0">testCases.Test2GET</stat>
+<stat fail="1" id="s1-s3" name="Test3-405" pass="0">testCases.Test3-405</stat>
+<stat fail="3" id="s1-s4" name="Test4DELETE" pass="0">testCases.Test4DELETE</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20191216 01:15:56.857" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9dbcd0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:57.062" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9dbc50&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:57.468" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9f3050&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:57.482" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa671d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:57.689" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67390&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.097" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10f9f3110&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.111" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa671d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.314" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa760d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.720" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa76290&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.736" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82050&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:58.940" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa76750&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.345" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa822d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.366" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67210&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.570" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67cd0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.974" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa67950&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:15:59.987" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82b10&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:00.192" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82cd0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:00.598" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa82dd0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:00.613" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa92990&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:00.815" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa92b50&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.222" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa92d10&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.243" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa70d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.447" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa9f7d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.853" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa7350&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:01.871" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa92d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:02.078" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9490&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:02.484" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9650&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:02.500" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10fa9f310&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:02.707" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa90d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.115" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9290&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.130" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faa9f50&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.337" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faba150&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+<msg timestamp="20191216 01:16:03.745" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10faba310&gt;: Failed to establish a new connection: [Errno 61] Connection refused',)': /api/v1/post</msg>
+</errors>
+</robot>
