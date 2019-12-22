@@ -1,8 +1,5 @@
 package ca.utoronto.utm.mcs;
 
-import com.mongodb.client.MongoClient;
-import java.net.URI;
-import java.net.URISyntaxException;
 import com.sun.net.httpserver.HttpServer;
 
 import javax.inject.Inject;

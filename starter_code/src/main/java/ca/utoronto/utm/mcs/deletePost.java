@@ -2,7 +2,6 @@ package ca.utoronto.utm.mcs;
 
 import com.mongodb.client.MongoCollection;
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 import dagger.ObjectGraph;
 import java.io.IOException;
 import java.io.OutputStream;

@@ -4,24 +4,20 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import com.mongodb.DBObject;
 import dagger.ObjectGraph;
 import org.bson.Document;
 import org.bson.types.*;
 import org.json.*;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.List;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCursor;
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 
 public class getPost {
 

@@ -1,20 +1,14 @@
 package ca.utoronto.utm.mcs;
 
-import com.mongodb.DBObject;
 import com.mongodb.client.MongoCollection;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.xml.internal.fastinfoset.util.StringArray;
 import dagger.ObjectGraph;
 import java.util.ArrayList;
 import javax.inject.Inject;
 import org.bson.Document;
 import org.json.*;
-import com.mongodb.client.MongoClient;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
-import java.util.Map;
 
 public class putPost {
 
