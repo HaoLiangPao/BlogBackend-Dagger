@@ -1,4 +1,0 @@
-Auto-marker: 59.09090909090909/65          (10/11 scaled out of 65)
-Dependency Injection: 25/25
-Git-flow: 10/10
-Total Marks: 94.0909090909091/100
